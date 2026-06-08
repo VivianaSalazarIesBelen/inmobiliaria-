@@ -1,0 +1,69 @@
+<section class="form-page">
+
+  <h2>Añadir nueva vivienda</h2>
+
+  @if (successMsg()) {
+    <div class="alert alert-success">
+      {{ successMsg() }}
+      <button type="button" class="alert-close" (click)="successMsg.set('')">×</button>
+    </div>
+  }
+
+  @if (errorMsg()) {
+    <div class="alert alert-error">
+      {{ errorMsg() }}
+      <button type="button" class="alert-close" (click)="errorMsg.set('')">×</button>
+    </div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+    <label for="name">Nombre / Título *</label>
+    <input id="name" type="text" formControlName="name">
+    @if (form.controls.name.touched && form.controls.name.invalid) {
+      <p class="field-error">
+        @if (form.controls.name.errors?.['required']) { Obligatorio }
+        @if (form.controls.name.errors?.['minlength']) { Mínimo 3 caracteres }
+      </p>
+    }
+
+    <label for="city">Ciudad *</label>
+    <input id="city" type="text" formControlName="city">
+    @if (form.controls.city.touched && form.controls.city.invalid) {
+      <p class="field-error">Obligatorio</p>
+    }
+
+    <label for="state">Estado / Provincia *</label>
+    <input id="state" type="text" formControlName="state">
+    @if (form.controls.state.touched && form.controls.state.invalid) {
+      <p class="field-error">Obligatorio</p>
+    }
+
+    <label for="availableUnits">Unidades disponibles *</label>
+    <input id="availableUnits" type="number" formControlName="availableUnits" min="1">
+    @if (form.controls.availableUnits.touched && form.controls.availableUnits.invalid) {
+      <p class="field-error">Mínimo 1</p>
+    }
+
+    <label for="price">Precio *</label>
+    <input id="price" type="number" formControlName="price" min="10000">
+    @if (form.controls.price.touched && form.controls.price.invalid) {
+      <p class="field-error">Mínimo 10000</p>
+    }
+
+    <div class="checks">
+      <label class="check"><input type="checkbox" formControlName="wifi"> Wifi</label>
+      <label class="check"><input type="checkbox" formControlName="laundry"> Lavandería</label>
+      <label class="check"><input type="checkbox" formControlName="available"> Disponible ahora</label>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="primary" [disabled]="form.invalid || submitting()">
+        @if (submitting()) { Guardando… } @else { Guardar vivienda }
+      </button>
+      <button type="button" class="secondary" (click)="cancel()">Cancelar</button>
+    </div>
+
+  </form>
+
+</section>

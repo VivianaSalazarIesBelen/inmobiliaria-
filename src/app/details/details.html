@@ -1,0 +1,97 @@
+@if (housingLocation(); as house) {
+
+  <section class="listing">
+
+    <img
+      class="listing-photo"
+      [src]="house.photo"
+      [alt]="house.name">
+
+    <h2>{{ house.name }}</h2>
+
+    <p>
+      {{ house.city }},
+      {{ house.state }}
+    </p>
+
+    <p>
+      Precio: ${{ house.price }}
+    </p>
+
+    @if (weather(); as w) {
+      <p class="listing-weather">
+        Clima actual: {{ w.current.temp_c }}°C, {{ w.current.condition.text }}
+        <img [src]="'https:' + w.current.condition.icon" [alt]="w.current.condition.text">
+      </p>
+    }
+
+  </section>
+
+  <section class="listing-apply">
+
+    <h2>Apply now</h2>
+
+    <form
+      [formGroup]="applyForm"
+      (ngSubmit)="submitApplication()">
+
+      <label for="first-name">First Name</label>
+
+      <input
+        id="first-name"
+        type="text"
+        formControlName="firstName">
+
+      @if (
+        applyForm.controls.firstName.touched &&
+        applyForm.controls.firstName.invalid
+        ) {
+        <p>First name is required</p>
+      }
+
+      <label for="last-name">Last Name</label>
+
+      <input
+        id="last-name"
+        type="text"
+        formControlName="lastName">
+
+      @if (
+        applyForm.controls.lastName.touched &&
+        applyForm.controls.lastName.invalid
+        ) {
+        <p>Last name is required</p>
+      }
+
+      <label for="email">Email</label>
+
+      <input
+        id="email"
+        type="email"
+        formControlName="email">
+
+      @if (
+        applyForm.controls.email.touched &&
+        applyForm.controls.email.invalid
+        ) {
+
+        @if (applyForm.controls.email.errors?.['required']) {
+          <p>Email is required</p>
+        }
+
+        @if (applyForm.controls.email.errors?.['email']) {
+          <p>Invalid email format</p>
+        }
+      }
+
+      <button type="submit">
+        Apply now
+      </button>
+
+    </form>
+
+  </section>
+
+} @else {
+  <p>Cargando...</p>
+}
