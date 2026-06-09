@@ -18,6 +18,26 @@
       Precio: ${{ house.price }}
     </p>
 
+    <div class="listing-features">
+      <div class="feature-badge">
+        <span>Unidades disponibles: <strong>{{ house.availableUnits }}</strong></span>
+      </div>
+
+      <div class="feature-badge" [class.disabled]="!house.wifi">
+        <span>Wifi: <strong>{{ house.wifi ? 'Disponible' : 'No disponible' }}</strong></span>
+      </div>
+
+      <div class="feature-badge" [class.disabled]="!house.laundry">
+        <span>Lavandería: <strong>{{ house.laundry ? 'Disponible' : 'No disponible' }}</strong></span>
+      </div>
+
+      <div class="status-badge" [class.available]="house.available" [class.unavailable]="!house.available">
+        {{ house.available ? '● Disponible Ahora' : '● No Disponible' }}
+      </div>
+    </div>
+
+
+
     @if (weather(); as w) {
       <p class="listing-weather">
         Clima actual: {{ w.current.temp_c }}°C, {{ w.current.condition.text }}
