@@ -170,10 +170,10 @@
       "wifi": true,
       "laundry": false,
       "available": true,
-      "photo": "",
+      "photo": "https://blog.visitacostadelsol.com/hubfs/que%20ver%20en%20Malaga.webp",
       "coordinate": {
-        "latitude": 0,
-        "longitude": 0
+        "latitude": 36.7213,
+        "longitude": -4.4214
       }
     }
   ]
