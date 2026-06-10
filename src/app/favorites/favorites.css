@@ -1,0 +1,20 @@
+.results {
+  display: flex;
+  gap: 15px;
+
+
+}
+
+.fav-item {
+  position: relative;
+}
+
+.remove-btn {
+  margin-top: 10px;
+  background: #e53935;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+}
+

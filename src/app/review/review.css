@@ -1,0 +1,22 @@
+.review {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.date {
+  color: #888;
+}
+
+.stars {
+  color: #f5a623;
+}
+
+.comment {
+  margin-top: 5px;
+}

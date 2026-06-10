@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
+import { FavoritesService } from './favorites';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,24 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   template: `
     <main>
       <header class="brand-name">
+
         <a routerLink="/">
           <img class="brand-logo"
                src="/logo-houses.png"
                alt="logo"
                aria-hidden="true">
         </a>
-        <a routerLink="/new" class="add-link">+ Añadir vivienda</a>
+
+        <nav class="nav-links">
+          <a routerLink="/favorites" class="fav-link">
+            ❤️ {{ favoritesCount() }} favoritos
+          </a>
+
+          <a routerLink="/new" class="add-link">
+            + Añadir vivienda
+          </a>
+        </nav>
+
       </header>
 
       <section class="content">
@@ -25,5 +37,9 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  title = 'homes';
+  private favoritesService = inject(FavoritesService);
+
+  // contador reactivo
+  favoritesCount = () =>
+    this.favoritesService.favoritesList()().length;
 }

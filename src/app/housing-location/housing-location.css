@@ -40,3 +40,12 @@ a {
   color: var(--primary-color, #5c6bc0);
   font-weight: bold;
 }
+
+.fav-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 10px;
+  background:  whitesmoke;;
+  font-weight: bold;
+}

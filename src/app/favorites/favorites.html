@@ -1,0 +1,17 @@
+<h2>Mis favoritos</h2>
+
+@if (favorites().length > 0) {
+
+  <p>{{ favorites().length }} viviendas favoritas</p>
+
+  <section class="results">
+
+    @for (item of favorites(); track item.id) {
+      <app-housing-location [housingLocation]="item"></app-housing-location>
+    }
+
+  </section>
+
+} @else {
+  <p>No tienes favoritos aún ♡</p>
+}

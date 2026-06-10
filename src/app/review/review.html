@@ -1,0 +1,18 @@
+<div class="review">
+
+  <div class="header">
+    <strong>{{ review().user }}</strong>
+    <span class="date">{{ review().date }}</span>
+  </div>
+
+  <div class="stars">
+    @for (star of getStars(); track $index) {
+      ⭐
+    }
+  </div>
+
+  <p class="comment">
+    {{ review().comment }}
+  </p>
+
+</div>

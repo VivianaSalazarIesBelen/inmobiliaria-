@@ -13,7 +13,9 @@
       {{ house.city }},
       {{ house.state }}
     </p>
-
+    <button type="button" (click)="toggleFavorite()" class="fav-btn">
+      {{ isFavorite() ? '❤️' : '♡' }}
+    </button>
     <p>
       Precio: ${{ house.price }}
     </p>
@@ -43,6 +45,23 @@
         Clima actual: {{ w.current.temp_c }}°C, {{ w.current.condition.text }}
         <img [src]="'https:' + w.current.condition.icon" [alt]="w.current.condition.text">
       </p>
+    }
+
+  </section>
+
+  <section class="reviews-section">
+
+    <h3>Reseñas</h3>
+
+    @for (review of reviewsSorted; track review.date) {
+      <app-review [review]="review"></app-review>
+    }
+
+
+
+
+    @empty {
+      <p>No hay reseñas aún.</p>
     }
 
   </section>
@@ -112,6 +131,8 @@
 
   </section>
 
+
 } @else {
   <p>Cargando...</p>
 }
+

@@ -117,28 +117,21 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
 }
 
-/* --- BOTÓN --- */
+
 button {
   margin-top: 25px;
   padding: 14px;
   border: none;
   border-radius: 10px;
-  background: #1976d2;
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
+  background-color: #1976d2;
   width: 100%;
 }
 
 button:hover {
-  background: #1565c0;
+  background: lightblue;
 }
 
-button:active {
-  transform: scale(0.99);
-}
+
 
 
 form p {
@@ -191,4 +184,20 @@ form p {
   background: #fee2e2;
   color: #b91c1c;
   border: 1px solid #fecaca;
+}
+
+.fav-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 10px;
+  background:cornflowerblue;
+  font-weight: bold;
+}
+
+.reviews-section {
+  margin-top: 20px;
+  padding: 10px;
+  background: #fafafa;
+  border-radius: 10px;
 }

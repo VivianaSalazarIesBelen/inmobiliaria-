@@ -14,4 +14,11 @@ export interface HousingLocation {
   };
   price: number;
   available: boolean;
+
+  reviews?: {
+    user: string;
+    date: string;
+    rating: number;
+    comment: string;
+  }[];
 }

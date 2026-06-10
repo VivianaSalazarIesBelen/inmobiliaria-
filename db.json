@@ -14,7 +14,15 @@
         "longitude": -87.6298
       },
       "price": 25000,
-      "available": true
+      "available": true,
+      "reviews":[
+        {
+          "user": "Ana López",
+          "date": "2024-07-07",
+          "rating": 5,
+          "comment": "Excelente vivienda, muy cómoda"
+        }
+      ]
     },
     {
       "id": "1",
@@ -30,7 +38,21 @@
         "longitude": -118.4912
       },
       "price": 45000,
-      "available": false
+      "available": false,
+      "reviews":[
+        {
+          "user": "Ana López",
+          "date": "2021-07-19",
+          "rating": 5,
+          "comment": "Excelente vivienda, muy cómoda"
+        },
+        {
+          "user": "Juan Pérez",
+          "date": "2019-05-19",
+          "rating": 4,
+          "comment": "Buena ubicación"
+        }
+      ]
     },
     {
       "id": "2",
@@ -62,7 +84,32 @@
         "longitude": -87.6298
       },
       "price": 22000,
-      "available": true
+      "available": true,
+      "reviews":[
+        {
+          "user": "Ana López",
+          "date": "2026-12-01",
+          "rating": 5,
+          "comment": "Excelente vivienda, muy cómoda"
+        },
+        {
+          "user": "Juan Pérez",
+          "date": "2020-05-15",
+          "rating": 4,
+          "comment": "Buena ubicación"
+        }, {
+          "user": "Ana López",
+          "date": "2023-09-08",
+          "rating": 5,
+          "comment": "Excelente vivienda, muy cómoda"
+        },
+        {
+          "user": "Viviana",
+          "date": "2026-01-20",
+          "rating": 4,
+          "comment": "Buena ubicación"
+        }
+      ]
     },
     {
       "id": "4",
@@ -78,7 +125,15 @@
         "longitude": -87.3464
       },
       "price": 12500,
-      "available": true
+      "available": true,
+      "reviews":[
+        {
+          "user": "Ana López",
+          "date": "2022-07-07",
+          "rating": 2,
+          "comment": "Puede mejorar"
+        }
+      ]
     },
     {
       "id": "5",
@@ -94,7 +149,15 @@
         "longitude": -122.2712
       },
       "price": 31000,
-      "available": true
+      "available": true,
+      "reviews":[
+        {
+          "user": "Maria",
+          "date": "2023-03-03",
+          "rating": 1,
+          "comment": "no me ha gustado "
+        }
+      ]
     },
     {
       "id": "6",

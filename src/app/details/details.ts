@@ -1,5 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FavoritesService } from '../favorites';
+import { ReviewComponent } from '../review/review';
 import {
   ReactiveFormsModule,
   Validators,
@@ -13,7 +15,7 @@ import { HousingLocation } from '../housinglocation';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ReviewComponent],
   templateUrl: './details.html',
   styleUrl: './details.css',
 })
@@ -21,6 +23,7 @@ export class DetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private housingService = inject(HousingService);
   private fb = inject(NonNullableFormBuilder);
+
 
   // Signals: la app corre en modo zoneless (Angular 21), así que el estado
   // que se muestra en la plantilla debe ser reactivo para refrescar la vista.
@@ -30,6 +33,7 @@ export class DetailsComponent implements OnInit {
   weather = signal<any | undefined>(undefined);
 
   private houseId: string | null = null;
+
 
   applyForm = this.fb.group({
     firstName: ['', Validators.required],
@@ -81,5 +85,26 @@ export class DetailsComponent implements OnInit {
         `Solicitud enviada y guardada en localStorage para la casa número ${this.houseId}`,
       );
     }
+  }
+
+  get reviewsSorted() {
+    return (this.housingLocation()?.reviews ?? [])
+      .slice()
+      .sort((a, b) =>
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+  }
+
+  private favoritesService = inject(FavoritesService);
+
+  toggleFavorite() {
+    const house = this.housingLocation();
+    if (!house) return;
+    this.favoritesService.toggle(house.id);
+  }
+
+  isFavorite(): boolean {
+    const house = this.housingLocation();
+    return house ? this.favoritesService.isFavorite(house.id) : false;
   }
 }
