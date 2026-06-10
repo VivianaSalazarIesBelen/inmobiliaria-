@@ -49,6 +49,14 @@
 
   </section>
 
+  <span class="rating-value">
+  {{ getAverageRating(house.reviews ?? []) }}/5
+</span>
+  @for (star of getStars(getAverageRating(house.reviews ?? [])); track $index) {
+    ⭐
+  }
+  ({{ house.reviews?.length ?? 0 }} reseñas)
+
   <section class="reviews-section">
 
     <h3>Reseñas</h3>

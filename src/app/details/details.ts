@@ -107,4 +107,16 @@ export class DetailsComponent implements OnInit {
     const house = this.housingLocation();
     return house ? this.favoritesService.isFavorite(house.id) : false;
   }
+
+  getAverageRating(reviews: { rating: number }[]): number {
+    if (!reviews.length) return 0;
+
+    const sum = reviews.reduce((acc, r) => acc + r.rating, 0);
+    return Number((sum / reviews.length).toFixed(1));
+  }
+
+  getStars(rating: number): number[] {
+    const fullStars = Math.round(rating);
+    return Array(fullStars).fill(0);
+  }
 }
